@@ -37,13 +37,13 @@ public class ScannerController {
     /**
      * Health check endpoint
      */
-    @GetMapping("/health")
+    @GetMapping("/")
     @Operation(
         summary = "Health check",
         description = "Check if the scanner service is running"
     )
     public ResponseEntity<String> healthCheck() {
-        return ResponseEntity.ok("⚡ Code Vulnerability Scanner is running!");
+        return ResponseEntity.ok(" Code Vulnerability Scanner is running!");
     }
     
     /**
@@ -91,7 +91,7 @@ public class ScannerController {
             // Check rate limit first
             rateLimitInterceptor.checkRateLimit(request);
             
-            log.info("📁 File scan request: filename='{}', size={} bytes, language='{}'", 
+            log.info(" File scan request: filename='{}', size={} bytes, language='{}'", 
                      file.getOriginalFilename(), 
                      file.getSize(), 
                      language != null ? language : "auto-detect");
@@ -99,16 +99,16 @@ public class ScannerController {
             // Delegate to service layer (handles language detection)
             ScanResult result = scannerService.scanFile(file, language);
             
-            log.info("✅ File scan completed: {} vulnerabilities found", 
+            log.info(" File scan completed: {} vulnerabilities found", 
                      result.getVulnerabilities().size());
             
             return ResponseEntity.ok(result);
             
         } catch (IllegalArgumentException e) {
-            log.warn("❌ Invalid file scan request: {}", e.getMessage());
+            log.warn(" Invalid file scan request: {}", e.getMessage());
             throw e;
         } catch (Exception e) {
-            log.error("❌ Error during file scan: {}", e.getMessage(), e);
+            log.error(" Error during file scan: {}", e.getMessage(), e);
             throw new RuntimeException("File scan failed: " + e.getMessage(), e);
         }
     }
@@ -153,7 +153,7 @@ public class ScannerController {
             // Check rate limit first
             rateLimitInterceptor.checkRateLimit(httpRequest);
             
-            log.info("📝 Raw code scan request: language='{}', codeLength={} chars", 
+            log.info(" Raw code scan request: language='{}', codeLength={} chars", 
                      request.getLanguage() != null ? request.getLanguage() : "auto-detect",
                      request.getCode().length());
             
@@ -163,17 +163,17 @@ public class ScannerController {
                 request.getLanguage()
             );
             
-            log.info("✅ Raw code scan completed: {} vulnerabilities found in {} code", 
+            log.info(" Raw code scan completed: {} vulnerabilities found in {} code", 
                      result.getVulnerabilities().size(),
                      result.getLanguage());
             
             return ResponseEntity.ok(result);
             
         } catch (IllegalArgumentException e) {
-            log.warn("❌ Invalid raw code scan request: {}", e.getMessage());
+            log.warn(" Invalid raw code scan request: {}", e.getMessage());
             throw e;
         } catch (Exception e) {
-            log.error("❌ Error during raw code scan: {}", e.getMessage(), e);
+            log.error(" Error during raw code scan: {}", e.getMessage(), e);
             throw new RuntimeException("Raw code scan failed: " + e.getMessage(), e);
         }
     }
