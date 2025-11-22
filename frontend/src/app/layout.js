@@ -6,9 +6,9 @@ export const metadata = {
 
   // ✅ Add favicon here
   icons: {
-    icon: "/CodeArmorlogo.svg",        // You can replace with /logo.png or any image
-    shortcut: "/CodeArmorlogo.svg",
-    apple: "/CodeArmorlogo.svg",       // Optional for iOS
+    icon: "/CodeArmorLogo.svg",        // You can replace with /logo.png or any image
+    shortcut: "/CodeArmorLogo.svg",
+    apple: "/CodeArmorLogo.svg",       // Optional for iOS
   },
 };
 
