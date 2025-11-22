@@ -1,24 +1,21 @@
 import "./globals.css";
-import Head from "next/head";
 
 export const metadata = {
   title: "CodeArmor",
   description: "Created by Aniket, Avnish",
+
+  // ✅ Add favicon here
   icons: {
-    icon: "/CodeArmorlogo.svg?v=2",
+    icon: "/CodeArmorlogo.svg",        // You can replace with /logo.png or any image
     shortcut: "/CodeArmorlogo.svg",
-    apple: "/CodeArmorlogo.svg",
+    apple: "/CodeArmorlogo.svg",       // Optional for iOS
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/CodeArmorlogo.svg?v=2" type="image/svg+xml" />
-      </head>
       <body>{children}</body>
     </html>
   );
 }
-
