@@ -37,7 +37,7 @@ public class ScannerController {
     /**
      * Health check endpoint
      */
-    @GetMapping("/")
+    @GetMapping("/health")
     @Operation(
         summary = "Health check",
         description = "Check if the scanner service is running"
