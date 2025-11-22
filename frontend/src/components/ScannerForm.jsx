@@ -148,8 +148,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ScannerForm() {
-  // const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-      const BACKEND_URL = https://codearmor-5yyb.onrender.com
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const [apiUrl, setApiUrl] = useState("");
   const [code, setCode] = useState("");
